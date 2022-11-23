@@ -31,8 +31,6 @@ tenha acesso aos métodos e atributos da classe que a compõe.
 ## Base SOLID
 https://medium.com/mindorks/solid-principles-explained-with-examples-79d1ce114ace
 
-Curso SOLID na plataforma ALURA.
-
 SOLID é um acrônimo que representa cinco princípios da programação orientada a objetos e design de código.
 
 **Single Responsibility Principle** (Princípio da Responsabilidade Única):
@@ -79,7 +77,7 @@ Abstrair as dependências de uma classe, para que ela não dependa de implementa
 Exemplo do robo, que deve ter a função de cortar, mas que pode fazer com uma faca, uma serra ou um facão.
 
 
-Geralmente quando se aplica o Openclosed, o S,O e D são indiretamente aplicados, pois você separa as implementações em classes diferentes. 
+Geralmente quando se aplica o O, S,O e D são indiretamente aplicados, pois você separa as implementações em classes != 
 
 
 ## Conclusões
@@ -154,15 +152,7 @@ https://agilemanifesto.org
 ## Extras
 
 ### String x StringBuilder x StringBuffer
-Fonte de estudos 
-
-https://www.youtube.com/watch?v=_drNcLWgUlE 
-
-https://www.youtube.com/watch?v=oYcb0N1YfVw 
-
-https://www.devmedia.com.br/diferencas-entre-string-stringbuilder-e-stringbuffer-em-java/29865
-
-#### Strings
+Fonte de estudos ( https://www.youtube.com/watch?v=_drNcLWgUlE | https://www.youtube.com/watch?v=oYcb0N1YfVw | https://www.devmedia.com.br/diferencas-entre-string-stringbuilder-e-stringbuffer-em-java/29865)
 
 Strings são imutáveis, ou seja, toda vez que alteramos seu valor, criamos um novo objeto na memória.
 
@@ -172,9 +162,7 @@ Mas a imutabilidade é necessária mesmo com seu drawback em alguns casos.
 
 #### - Builder x Buffer
 
-Primeiro, cabe destacar que o BUILDER **NÃO** É SINCRONIZADO, enquanto o BUFFER **É**. 
-
-O que quero dizer com isso?
+Primeiro, cabe destacar que o BUILDER **NÃO** É SINCRONIZADO, enquanto o BUFFER **É**. O que quero dizer com isso?
 
 - Diferenças do SBuilder SBuffer:
 
@@ -182,10 +170,7 @@ O StringBuilder desempenha melhor em aplicações com um único thread, pois nã
 possui também maior perfomance porém sem garantia de sincronização, é utilizado em operações .insert e .append.
 
 Já o StringBuffer é mais indicado para aplicações com vários threads, pois ele sincroniza o acesso aos métodos, 
-por isso tb é considerado *Thread Safe*, ou seja, você garante a consistência do seu código quando há diversas
-threads lendo ou modificando a mesma String.
-
-Em termos de desempenho, o StringBuffer é mais lento que o StringBuilder entorno de 30%.
+por isso tb é considerado *Thread Safe*, ou seja, o comportamento em uma thread não afeta o comportamento em outra thread.
 
 
 

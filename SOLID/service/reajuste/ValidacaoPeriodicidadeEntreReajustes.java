@@ -1,4 +1,4 @@
-package SOLID.reajuste;
+package SOLID.service.reajuste;
 
 import SOLID.model.Funcionario;
 
@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class ValidacaoPeriodicidadeEntreReajustes  implements ValidacaoReajuste {
-	
+
 	public void validar(Funcionario funcionario, BigDecimal aumento) {
 		LocalDate dataUltimoReajuste = funcionario.getDataUltimoReajuste();
 		LocalDate dataAtual = LocalDate.now();
-		long mesesDeseUltimoReajuste = ChronoUnit.MONTHS.between(dataUltimoReajuste, dataAtual);
-		if (mesesDeseUltimoReajuste < 6) {
+		long mesesDesdeUltimoReajuste = ChronoUnit.MONTHS.between(dataUltimoReajuste, dataAtual);
+		if (mesesDesdeUltimoReajuste < 6) {
 			throw new NullPointerException("Intervalo entre reajustes deve ser de no minimo 6 meses!");
 		}
 	}
-
+	
 }

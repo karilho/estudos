@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Funcionario {
-
+	private DadosPessoais dadosPessoais;
 	private String nome;
 	private String cpf;
 	private Cargo cargo;
@@ -25,6 +25,10 @@ public class Funcionario {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void promover(Cargo novoCargo) {
+		this.dadosPessoais.setCargo(novoCargo);
 	}
 
 	public void setNome(String nome) {
@@ -62,5 +66,8 @@ public class Funcionario {
 	public void setDataUltimoReajuste(LocalDate dataUltimoReajuste) {
 		this.dataUltimoReajuste = dataUltimoReajuste;
 	}
+
+
+
 
 }

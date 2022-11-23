@@ -1,4 +1,4 @@
-package SOLID.reajuste;
+package SOLID.service.reajuste;
 
 import SOLID.model.Funcionario;
 
