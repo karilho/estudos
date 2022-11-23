@@ -55,7 +55,7 @@ alguns códigos anteriores, pois será permitido implementações novas das clas
 Priorizar a composição se possivel ao invés de herança, sempre usa-la com cuidado.
 
 Exemplo: O exemplo do terceirizado ou de uma regra de calculo de imposto (vídeo: https://www.youtube.com/watch?v=tIcfvP9jf9k) 
-Ao herdar, você tomar cuidado com as prés e pós condições, pois o polimofirmo vai permitir que você coloque-os, mas vai ferir regras.
+Ao herdar, você deve tomar cuidado com as prés e pós condições, pois o polimorfirsmo vai permitir que você coloque-os, mas vai ferir regras.
 
 - PRÉ condições (regras antes do negócio) não podem ser reforçadas em subclasses ||| 
 Regra anterior de calculo de imposto = imposto > 0, NOVA PRÉ CONDIÇÃO: imposto > -10. OK NESTE CASO.
@@ -65,7 +65,7 @@ Regra anterior de calculo de imposto = imposto > 0, NOVA PRÉ CONDIÇÃO: impost
 
 Regra anterior, o retorno era maior que 0 NOVA PÓS CONDIÇÃO: O retorno devolve algum valor > 10. OK NESTE CASO
 
-PORÉM, eu poderia botar um retorno maior que -50 por exemplo, o que quebra a regra anterior do número ser > 10
+PORÉM, eu poderia botar um retorno maior que -50 por exemplo, o que iria quebrar a regra anterior do número seria colocar > 10
 
 **Interface Segregation Principle** (Princípio da Segregação de Interfaces):
 é um princípio que diz que nenhuma classe deve ser forçada a depender de métodos que ela não vai usar, ou seja, você
@@ -76,7 +76,7 @@ O ReajusteTributável vai implementar o método de cálculo de imposto, e o Reaj
 
 **Dependency Inversion Principle** (Princípio da Inversão de Dependência):
 Abstrair as dependências de uma classe, para que ela não dependa de implementações de outra classe, mas sim de interfaces (um exemplo de abstração).
-Exemplo do robo, que deve ter a função de cortar, mas que pode fazer com uma faca, uma serra ou um facão.
+Exemplo do braço de um robo, que deve ter a função de cortar, mas que pode fazer com uma faca, uma serra ou um facão.
 
 
 Geralmente quando se aplica o Openclosed, o S,O e D são indiretamente aplicados, pois você separa as implementações em classes diferentes. 
