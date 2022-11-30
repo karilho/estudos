@@ -31,6 +31,8 @@ tenha acesso aos métodos e atributos da classe que a compõe.
 ## Base SOLID
 https://medium.com/mindorks/solid-principles-explained-with-examples-79d1ce114ace
 
+Curso SOLID na plataforma ALURA.
+
 SOLID é um acrônimo que representa cinco princípios da programação orientada a objetos e design de código.
 
 **Single Responsibility Principle** (Princípio da Responsabilidade Única):
@@ -77,7 +79,7 @@ Abstrair as dependências de uma classe, para que ela não dependa de implementa
 Exemplo do robo, que deve ter a função de cortar, mas que pode fazer com uma faca, uma serra ou um facão.
 
 
-Geralmente quando se aplica o O, S,O e D são indiretamente aplicados, pois você separa as implementações em classes != 
+Geralmente quando se aplica o Openclosed, o S,O e D são indiretamente aplicados, pois você separa as implementações em classes diferentes. 
 
 
 ## Conclusões
@@ -98,9 +100,144 @@ Curso anterior
 Banco de dadosSQL ANSI (sql server)
 
 ## Cloud 
-Programação Assincrona | Async/Await
+### AWS
+##### AWS LightSail
+O Amazon Lightsail é um AWS com o propósito de simplificar o uso de vários recursos, é uma maneira 
+mais fácil de começar a usar a AWS para que pessoas possam construir e hospedar suas aplicações na nuvem. 
 
-Armazenamento e Cache
+- Serviços como:
+
+- Snapshots: Cria uma "cópia" de segurança de seu servidor instância e armazena-a em um local seguro em tempo REAL, pode ser utilizado para 
+permitir recuperação de desastres, imigração de arquivos entre regiões ou garantir backups de dados com observância.
+- 
+- Load Balance: Um load balancer serve como ponto único de contato para os clientes. O load balancer **DISTRIBUI** o tráfego de entrada do aplicativo por vários destinos
+, como instâncias EC2, em várias Zonas de disponibilidade. Isso aumenta a disponibilidade do seu aplicativo. Você adiciona um ou mais listeners ao seu load balancer.
+
+- Containers: Podem ser utilizados em conjunto com Lightsail, como por exemplo o: Nginx, o Redis etc. Permite também um versionamento dos containers, com funções de rollback por exemplo.
+
+- Storage: Armazenamento de dados, como por exemplo, armazenar arquivos de mídia, como fotos e vídeos, ou arquivos de backup
+
+É POSSÍVEL COM **BUCKET** (armazenamento de dados e metadados em cloud), seu nome também deve ser único independente da conta.
+
+DISCOS (volumes de armazenamentos que podem ser montados como disco rigidos, ele vive independente da instancia que está ligado)
+
+##### AWS S3
+O Amazon S3 é um serviço de armazenamento de objetos (.txt, .jar, .zip, .jpeg) na nuvem, num local chamado BUCKET
+
+- BUCKET - Repositório onde colocaremos nosso arquivo e trabalharemos nele.
+Para permitir o acesso no bucket é necessário configurar a Bucket policy e mudar a opção de privacidade. Além disso também
+é possível hospedar sites dentro do Bucket S3. PORÉM O SITE DEVE SER ESTATICO!!
+
+- IAM - Podemos criar usuários por meio desta ferramente e conceder acesso a eles ao nosso BUCKETS.
+
+- CLI - Command Line Interface - gerenciar a aws no próprio terminal
+
+- Versionamento no bucket - Cada objeto tem uma ID única, inclusive para o mesmo objeto.
+
+- Alguns comandos para usar no S3 CLI: 
+
+
+- Com o comando sync, você sincroniza os dados de um diretório local com o bucket S3. Ou seja, ele copia somente os arquivos que não existam ou foram alterados.
+- Você pode utilizar o cp para copiar um conteúdo local para um bucket . Ele serve para copiar um ou vários arquivos.
+- O comando rm remove um arquivo ou um diretório do bucket S3.
+- O comando ls lista os arquivos e diretórios do bucket S3.
+- O comando mv move um arquivo ou diretório do bucket S3.
+- O comando mb cria um novo bucket S3.
+- O comando rb remove um bucket S3.
+- O comando website habilita o bucket S3 para hospedar um site estático. 
+
+#### AWS LAMBDA
+É um serviço de computação serverless, ou seja, não precisa se preocupar com a infraestrutura, apenas com o código.
+configuramos um tempo máximo para nossa função. Caso ela não seja concluída dentro deste tempo, a mesma é encerrada!
+
+
+Ele configura toda a infraestrutura para serviços.
+
+** Resources configured - Mostra o quanto de memória foi alocado para a função.
+
+** Max memory used - Mostra o quanto de memória sua função realmente utilizou.
+
+Para criar a função, no campo Handler, deve-se respeitar:  **nome_do_arquivo.nome_da_classe.nome_do_metodo**
+
+##### Triggers
+
+Você cria um agendamento para função disparar X ou Y hora, como backup, reinicio etc.
+
+Você pode utilizar o bucket por exemplo da S3 para trabalhar com o trigger do Lambda
+
+O Cloudwatch tem o histórico das vezes utilizadas, faz o management.
+
+#### AWS IAM
+Serviço que gerencia usuários e grupos para acessar os serviços.
+
+#### AWS EC2
+
+Elastic Compute Cloud -  Serviço de computação na nuvem, que permite criar máquinas virtuais na nuvem e várias instâncias de diversos tamanhos.
+É possivel também utilizar instâncias pré configuradas.
+
+ **Diferença pro S3** - O S3 é um serviço de armazenamento de objetos, enquanto o EC2 é um serviço de computação, permitindo criação de VM na nuvem
+e também por exemplo, podemos colocar uma aplicação JAVA, ANGULAR, PHP para rodar pois permite conteúdo DINÂMICO, diferente da S3 que é estática.
+
+- Security Groups: Grupos de segurança que agem como firewall bloqueando ou permitindo trafégo as instâncias EC2.
+
+- Região x Zonas: Uma região geralmente recebe o nome da cidade onde se encontra. São Paulo, por exemplo, é uma região da AWS
+no momento da gravação desse treinamento. E dentro dessa região, há 3 espaços físicos que possuem sub-redes conectadas entre si.
+Estes espaços físicos são chamados de zonas de disponibilidade. Cada zona de disponibilidade pode ser uma sala,
+um andar ou até um prédio diferente dentro da região em questão.
+
+- Alguns serviços "satélites": Serviços como 
+
+##### Mini Conclusão
+
+Você utiliza o Lambda para por a função e o bucket do s3 para armazenar os dados.
+
+
+---------------------------------------------------------------------
+### AWS SDK
+https://www.youtube.com/watch?v=-4fOwmWdoYQ
+
+https://github.com/aws/aws-sdk-java-v2/
+
+
+
+Para utilizar ele, basta puxar a dependencia no pom.xml, ele permite que você adicione diversos serviços relacionados
+a AWS em sua aplicação para uso.
+
+#### Programação Assincrona | Async/Await
+
+https://www.youtube.com/watch?v=ZiuBfpI-z10
+
+https://www.youtube.com/watch?v=HAeNZqqmEGY
+
+https://www.educba.com/java-async-await/
+
+https://www.baeldung.com/java-asynchronous-programming
+
+https://www.devmedia.com.br/processamento-assincrono-em-java-com-future-e-futuretask/33851
+
+
+Você pode usar métodos síncronos ou assíncronos para chamar operações AWS serviços. 
+- Os métodos **síncronos** bloqueiam a execução do seu thread até o cliente receber uma resposta do serviço.
+- Os métodos **assincronos**  impedem o browser, caso seja uma api, de ficar esperando a resposta e pode executar tarefas mais demoradas paralelamente. 
+
+Alguns metods requerem um tempo maior de processamento, normalmente em ambientes de terceiros, como por exemplo, a Api dos correios, portanto,
+você pode utilizar métodos assincronos para que possam ser executados em paralelo, sem ter que aguardar a resposta do serviço para prosseguir.
+
+
+- Objetos futuros: 
+Classe que encapsula uma chamada feita em paralelo, sendo possível cancelar a execução de uma tarefa, descobrir se a execução 
+já terminou com sucesso ou erro, entre outras operações;
+
+- ExecutorService: 
+Classe para o gerenciamento de execuções em paralelo, já que cria um pool de threads, iniciando e cancelando 
+as execuções. Também é possível cancelar este, evitando assim a criação de novas tarefas.
+
+##### Diferença entre concorrência e paralelismo
+
+- Concorrência: você tem 1 CPU fazendo as 2 task de forma dividida, ou seja, ela faz uma task e depois a outra, mas não ao mesmo tempo.
+- Paralelismo: você tem 2 CPUs fazendo as 2 task concomitantemente.
+
+**Armazenamento e Cache**
 
 SQS E LAMBDA
 ## Clean Code 
@@ -149,10 +286,18 @@ Scrum | Kamban
 
 https://agilemanifesto.org
 
-## Extras
+# Extras
 
-### String x StringBuilder x StringBuffer
-Fonte de estudos ( https://www.youtube.com/watch?v=_drNcLWgUlE | https://www.youtube.com/watch?v=oYcb0N1YfVw | https://www.devmedia.com.br/diferencas-entre-string-stringbuilder-e-stringbuffer-em-java/29865)
+## String x StringBuilder x StringBuffer
+Fonte de estudos 
+
+https://www.youtube.com/watch?v=_drNcLWgUlE 
+
+https://www.youtube.com/watch?v=oYcb0N1YfVw 
+
+https://www.devmedia.com.br/diferencas-entre-string-stringbuilder-e-stringbuffer-em-java/29865
+
+#### Strings
 
 Strings são imutáveis, ou seja, toda vez que alteramos seu valor, criamos um novo objeto na memória.
 
@@ -162,7 +307,9 @@ Mas a imutabilidade é necessária mesmo com seu drawback em alguns casos.
 
 #### - Builder x Buffer
 
-Primeiro, cabe destacar que o BUILDER **NÃO** É SINCRONIZADO, enquanto o BUFFER **É**. O que quero dizer com isso?
+Primeiro, cabe destacar que o BUILDER **NÃO** É SINCRONIZADO, enquanto o BUFFER **É**. 
+
+O que quero dizer com isso?
 
 - Diferenças do SBuilder SBuffer:
 
@@ -170,7 +317,59 @@ O StringBuilder desempenha melhor em aplicações com um único thread, pois nã
 possui também maior perfomance porém sem garantia de sincronização, é utilizado em operações .insert e .append.
 
 Já o StringBuffer é mais indicado para aplicações com vários threads, pois ele sincroniza o acesso aos métodos, 
-por isso tb é considerado *Thread Safe*, ou seja, o comportamento em uma thread não afeta o comportamento em outra thread.
+por isso tb é considerado *Thread Safe*, ou seja, você garante a consistência do seu código quando há diversas
+threads lendo ou modificando a mesma String.
+
+Em termos de desempenho, o StringBuffer é mais lento que o StringBuilder entorno de 30%.
+
+## Java Reflection
+
+https://www.oracle.com/technical-resources/articles/java/javareflection.html#:~:text=Reflection%20is%20a%20feature%20in,its%20members%20and%20display%20them.
+
+http://www.baeldung.com/java-reflection
+
+http://www.dsc.ufcg.edu.br/~pet/jornal/novembro2012/materias/coluna_java.html#:~:text=Reflection%20é%20um%20pacote%20JAVA,quando%20estamos%20escrevendo%20nosso%20código.
+
+### O que é o Java Reflection?
+
+Java reflection é um recurso que permite analisar classes, interfaces, atributos e métodos em tempo de execução
+sem precisar conhecermos as classes envolvidas.
+
+No exemplo citado, temos o reflection sendo utilizado para obter o nome da classe Pessoa, o nome de seus métodos, parâmetros que eles recebem e retornos.
+Também é possível realizar a invocação destes métodos, como demonstrado no console pelo método invoke().
 
 
+### O que é BFF?
 
+https://learn.microsoft.com/pt-br/azure/architecture/patterns/backends-for-frontends
+
+https://samnewman.io/patterns/architectural/bff 
+
+BFF é uma abreviação para Back-end for Front-end, ou seja, um back-end que foi projetado 
+para atender as necessidades de um front-end específico. 
+
+Imagine uma tela de cadastro, onde é preciso apenas o email do usuário. O frontend consome uma API inteira
+que possui todos os campos (nome, CPF, RG, nome da mãe, telefone, CEP, demais campos de endereço, etc) para 
+depois exibir somente o input do email na tela. O JSON disso é grande. Através do backend, o BFF faz um filtro e 
+entrega para o front somente o necessário, deixando tudo bem mais leve.
+
+Crie serviços de back-end separados a serem consumidos por aplicativos de front-end específico ou interfaces.
+Esse padrão é útil quando você deseja evitar a personalização de um único back-end para várias interfaces. 
+Esse padrão foi descrito pela primeira vez por Sam Newman.
+
+Leia Contexto e problema do link. 
+Os requisitos aumentam com o tempo, pois é utilizado o msm BE para vários front-ends, mobile e desktop, apesar de 
+cada um dos dois possuir específidades. Com isso, há uma sobrecarga no backend de trabalho, pois é difícil
+de manter a compatibilidade com todos os front-ends, logo, torna-se o BE o problema, pois exige constantes atualizações
+para manter as entregas em ambos os FE.
+
+A solução seria o modelo BFF, onde cada FE teria seu BE específico. Cada equipe de interface vai possuir autonomia para 
+controlar seu backend, permitindo assim um melhor gerênciamento e desenvolvimento.
+
+PROS - maior velocidade, menos incompatabilidade e dependência entre ambos, maior escalabilidade, maior flexibilidade
+
+CONS - maior duplicação de código, maior gasto com equipes, quando vários backend forem criados, pode acabar gerando mais complexidade.
+
+Quando usar? Quando houver grande sobrecarga de trabalho em somente um backend, quando as solicitações 
+das interfaces front x back forem diferentes, com diversas específidades, quando uma linguagem diferente
+desempenhar melhor em determinado cenário.

@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class ValidacaoPeriodicidadeEntreReajustes  implements ValidacaoReajuste {
-
 	public void validar(Funcionario funcionario, BigDecimal aumento) {
 		LocalDate dataUltimoReajuste = funcionario.getDataUltimoReajuste();
 		LocalDate dataAtual = LocalDate.now();
@@ -16,5 +15,4 @@ public class ValidacaoPeriodicidadeEntreReajustes  implements ValidacaoReajuste 
 			throw new NullPointerException("Intervalo entre reajustes deve ser de no minimo 6 meses!");
 		}
 	}
-	
 }
